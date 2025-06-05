@@ -22,6 +22,14 @@ require("lazy").setup({
             require("vscode").load()
         end
     },
+    -- Vim be good
+    {
+        "ThePrimeagen/vim-be-good",
+        cmd = {
+            "VimBeGood", 
+        },
+    },
+
 
     -- File explorer
     {
@@ -66,7 +74,7 @@ require("lazy").setup({
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         config = function()
-            require("nvim-treesitter.configs").setup({
+            require('nvim-treesitter.configs').setup({
                 ensure_installed = {
                     "lua", "python", "cpp", "c", "javascript", "typescript", "bash", "html", "json", "css", "markdown"
                 },
@@ -111,6 +119,17 @@ require("lazy").setup({
             require("gitsigns").setup()
         end
     },
+
+    -- Git integration
+    {
+        "tpope/vim-fugitive",
+        cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit", "Gwrite", "Gread", "Glog", "Ggrep", "Gstatus", "Gbrowse" },
+        keys = {
+            { "<leader>gs", "<cmd>Git<CR>", desc = "Git status" },
+        }
+    },
+
+
 
     -- Harpoon
     {
@@ -238,22 +257,6 @@ require("lazy").setup({
             end, { desc = "Format buffer" })
         end
     },
-
-
-    {
-        "HiPhish/nvim-ts-rainbow2",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-        config = function()
-            require("nvim-treesitter.configs").setup({
-                rainbow = {
-                    enable = true,
-                    query = 'rainbow-parens',
-                    strategy = require('ts-rainbow.strategy.global'),
-                }
-            })
-        end
-    }
-
 
 
 })
